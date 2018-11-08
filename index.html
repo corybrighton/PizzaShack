@@ -14,11 +14,13 @@
 <body>
   <div class="container">
     <div class="row">
+      <form onsubmit="app.controllers.pizzaController.orderPizza(event)">
+        <div class="flex align-items-center justify-content-center" id="toppingsForm">
 
-      <form id="toppingsForm" onsubmit="app.controllers.pizzaController.orderPizza(event)">
-        <input type="checkbox" name="olives" onchange="">
-        <label for="olives">Olives</label>
-        <span id="price">$0.25</span>
+          <input type="checkbox" name="olives" onchange="">
+          <label for="olives">Olives</label>
+          <span id="price">$0.25</span>
+        </div>
       </form>
 
     </div>

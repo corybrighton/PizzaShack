@@ -6,11 +6,13 @@ function buildForm() {
   let template = ''
   _ps.getToppings().forEach(topping => {
     template += `
-    <input type="checkbox" name="${topping.name.toLowerCase()}" onchange="">
-    <label for="${topping.name.toLowerCase()}">${topping.name}</label>
-    <span id="price">$${topping.price}</span>`
+    <div>
+    <input type="checkbox" name="${topping.id}" onchange="">
+    <label for="${topping.id}">${topping.name}</label>
+    <span id="price">$${topping.price}</span>
+    </div>`
   });
-  document.getElementById("toppingsForm").innerHTML = template + `<button type="submit">Order</button>`
+  document.getElementById("toppingsForm").innerHTML = template + `<button class="btn btn-success" type="submit">Order</button>`
 }
 export default class PizzaController {
   constructor() {
@@ -18,8 +20,20 @@ export default class PizzaController {
   }
 
   orderPizza(event) {
-    event.preventdefault
+    event.preventDefault()
     let form = event.target
-    _ps.getPizza()
+    let formData = {
+      sausage: form.sausage.checked,
+      onions: form.onions.checked,
+      pepperoni: form.pepperoni.checked,
+      peppers: form.peppers.checked,
+      chicken: form.chicken.checked,
+      cheese: form.cheese.checked,
+      ham: form.ham.checked,
+      pineapple: form.pineapple.checked,
+      bacon: form.bacon.checked,
+      olives: form.olives.checked
+    }
+    _ps.getPizza(formData)
   }
 }
